@@ -32,7 +32,7 @@ class Gemini_API_Zho:
         return {
             "required": {
                 "prompt": ("STRING", {"default": "What is the meaning of life?", "multiline": True}),
-                "model_name": (["gemini-pro", "gemini-pro-vision", "gemini-1.5-pro-latest"],),
+                "model_name": (["gemini-pro", "gemini-1.5-flash", "gemini-1.5-pro-latest"],),
                 "stream": ("BOOLEAN", {"default": False}),
                 "api_key": ("STRING", {"default": ""})  # Add api_key as an input
             },
@@ -76,9 +76,9 @@ class Gemini_API_Zho:
                 response = model.generate_content(prompt)
                 textoutput = response.text
         
-        if model_name == 'gemini-pro-vision':
+        if model_name == 'gemini-1.5-flash':
             if image == None:
-                raise ValueError("gemini-pro-vision needs image")
+                raise ValueError("gemini-1.5-flash needs image")
             else:
                 # 转换图像
                 pil_image = self.tensor_to_image(image)
@@ -127,7 +127,7 @@ class Gemini_API_Vsion_ImgURL_Zho:
             "required": {
                 "prompt": ("STRING", {"default": "Describe this image", "multiline": True}),
                 "image_url": ("STRING", {"default": ""}),
-                "model_name": (["gemini-pro-vision", "gemini-1.5-pro-latest"],),
+                "model_name": (["gemini-1.5-flash", "gemini-1.5-pro-latest"],),
                 "stream": ("BOOLEAN", {"default": False}),
                 "api_key": ("STRING", {"default": ""})  # Add api_key as an input
             }
@@ -243,7 +243,7 @@ class Gemini_API_S_Zho:
         return {
             "required": {
                 "prompt": ("STRING", {"default": "What is the meaning of life?", "multiline": True}),
-                "model_name": (["gemini-pro", "gemini-pro-vision", "gemini-1.5-pro-latest"],),
+                "model_name": (["gemini-pro", "gemini-1.5-flash", "gemini-1.5-pro-latest"],),
                 "stream": ("BOOLEAN", {"default": False}),
             },
             "optional": {
@@ -283,9 +283,9 @@ class Gemini_API_S_Zho:
                 response = model.generate_content(prompt)
                 textoutput = response.text
         
-        if model_name == 'gemini-pro-vision':
+        if model_name == 'gemini-1.5-flash':
             if image == None:
-                raise ValueError("gemini-pro-vision needs image")
+                raise ValueError("gemini-1.5-flash needs image")
             else:
                 # 转换图像
                 pil_image = self.tensor_to_image(image)
@@ -334,7 +334,7 @@ class Gemini_API_S_Vsion_ImgURL_Zho:
             "required": {
                 "prompt": ("STRING", {"default": "Describe this image", "multiline": True}),
                 "image_url": ("STRING", {"default": ""}),
-                "model_name": (["gemini-pro-vision", "gemini-1.5-pro-latest"],),
+                "model_name": (["gemini-1.5-flash", "gemini-1.5-pro-latest"],),
                 "stream": ("BOOLEAN", {"default": False}),
             }
         }
